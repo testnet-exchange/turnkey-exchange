@@ -37,15 +37,19 @@ let callWsServer = payload => {
   let { _params, method, role, socketId } = payload;
   startWs(
     sock => {
-      let params = checkMethod(method, _params, role);
+      try {
+        let params = checkMethod(method, _params, role);
 
-      var req = JSON.stringify({
-        id: callId,
-        method,
-        params
-      });
-      console.log(req);
-      sock.send(req);
+        var req = JSON.stringify({
+          id: callId,
+          method,
+          params
+        });
+        console.log(req);
+        sock.send(req);
+      } catch (e) {
+        console.log(e);
+      }
     },
     data => {
       socketServer.to(socketId).emit("xresponse", data);
