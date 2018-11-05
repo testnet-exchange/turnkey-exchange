@@ -56,7 +56,5 @@ How to hit/make a ws connection to the server -:
   params: { market_list: "ETHBTC" },
   role: "public"
   });
-    
-
-
+   
 Coming Soon -: We will describe about Ngnix setting that redirects the AccessWs endpoint from Docker-Trade-Engine to ws-run-method to which our websocket server can reference to.
