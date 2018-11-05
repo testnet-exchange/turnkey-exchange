@@ -12,11 +12,11 @@ File ws-run-method, ws-methods, ws-check-method is added in the /services/xchang
 - ws-run-method -: It utilizes the url endpoint exposed by ViaBTC trade-engine, and creates our
   own websocket server on the top of it.
 
-- ws-methods -: All of the methods available in AccessWs API are referenched here.
+- ws-methods -: All of the methods available in AccessWs API are referenced here.
 
-- ws-check-method -: It checks wether we are making ws connection with AccessWs API with right method name and params. (It is incomplete as of right now).
+- ws-check-method -: It checks pramameters and method name while making connection with AccessWs API.(As of right now, it is incomplete).
 
-Descriptive Info about how the ws-run-method works -:
+Descriptive Info about How the ws-run-method works -:
 
 1. Two methods are exported  from "ws-run-method.js" that are "xchangeWs" and "wsRunMethod".
 
@@ -45,5 +45,18 @@ Descriptive Info about how the ws-run-method works -:
 
 We have implemented the "ws-run-method", but it is not completed yet. Changes can happen in it from time to time.
 
+How to hit/make a ws connection to the server -:
 
-Coming Soon -: We will describe about Ngnix setting that redirects the AccessWs ws-run-method to which our websocket server can reference to.
+- There is a file named "wsdemo.js", in the root directory of the project, It provides an example of how to establish connection with our WebSocket Server.
+- It act as a client and can connect to the server.
+- As defined in "wsdemo.js" , you can make ws connection like this -:
+   ``` 
+   ioClient.emit("wsx", {
+  method: "deals.subscribe",
+  params: { market_list: "ETHBTC" },
+  role: "public"
+  });
+    
+
+
+Coming Soon -: We will describe about Ngnix setting that redirects the AccessWs endpoint from Docker-Trade-Engine to ws-run-method to which our websocket server can reference to.
