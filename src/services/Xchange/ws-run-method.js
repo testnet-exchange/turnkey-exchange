@@ -36,7 +36,7 @@ let callWsServer = payload => {
   callId += 1;
   let { _params, method, role, socketId } = payload;
   startWs(
-    sock => {
+ sock => {
       try {
         let params = checkMethod(method, _params, role);
 
