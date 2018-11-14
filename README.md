@@ -45,7 +45,18 @@ Descriptive Info about How the ws-run-method works -:
 
 We have implemented the "ws-run-method", but it is not completed yet. Changes can happen in it from time to time.
 
-How to hit/make a ws connection to the server -:
+How to make a ws connection to the trade-engine-server -:
+
+- File "ws-run-method.js" at /services/xServices/Xchange/ is making a connection to trade-engine server.
+- You have to provide the exposed engine's Accessws URL to "wsUrl" in "ws-run-method.js"
+  Ex-: 
+   Suppose, We are using Bitlum/viabtc-engine, this engine exposes the Accessws server's endpoint at port 8090,
+   so we have to provide wsUrl the path.
+    " let wsUrl = "ws://localhost:8090"; ".
+   
+   Then you can call methods with clients as describe below. 
+
+How to hit/ping ws methods to ws connection of the backend-server -:
 
 - There is a file named "wsdemo.js", in the root directory of the project, It provides an example of how to establish connection with our WebSocket Server.
 - It act as a client and can connect to the server.
